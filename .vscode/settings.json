@@ -1,0 +1,14 @@
+{
+    "files.associations": {
+        "wifi.c": "cpp",
+        "stdlib.h": "c",
+        "dns.h": "c",
+        "stdio.h": "c",
+        "xlocale": "c",
+        "altcp_tcp.h": "c",
+        "cyw43_arch.h": "c",
+        "gpio.h": "c",
+        "adc.h": "c",
+        "string.h": "c"
+    }
+}

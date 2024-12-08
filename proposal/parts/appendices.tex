@@ -1,0 +1,132 @@
+%----------------------------------------------------------------------------------------
+%	Appendices
+%----------------------------------------------------------------------------------------
+
+\part{Appendices}
+
+\chapter{Deliverables}\label{appendix:deliverables}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{images/gantt.png}
+    \caption{Gantt Chart}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{images/workbreakdown.png}
+    \caption{Work Breakdown Structure}
+\end{figure}
+
+
+\chapter{API Endpoints}\label{appendix:API}
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|l|p{0.5\linewidth}|}
+    \hline
+        GET /api/locations  & Allows the front-end to retrieve all currently available locations of SPCA centres. Admin only.  \\ \hline
+        GET /api/locations/{id}  & Allows the front-end to select a location which sends a specific ID of that location to the back-end to allow relevant information to be processed and sent back to the front-end.  \\ \hline
+        GET /api/locations/{id}/user/{id}  & Retrieves user information. This endpoint can be accessed from the profiles page. Tokens and authentication methods will be used to secure the endpoint.  \\ \hline
+        GET /api/locations/{id}/dog/{id}  & Retrieves a specific dog’s details. This endpoint can be accessed from a list of dogs. Only admins and vets can modify this data  \\ \hline
+        POST /api/users  & Add new users to the system whenever a new account has been registered.  \\ \hline
+        POST /api/users/login  & Allow users to login to the application.  \\ \hline
+        GET /api/users/logout  & Allow users to log out of the application.  \\ \hline
+        POST /api/locations/{id}/dog  & Allow new dogs to be entered into the system with their location information   \\ \hline
+        DELETE /api/locations/{id}/dogs/{id}  & Delete dog entry in system, only for admin users  \\ \hline
+        POST /api/locations/{id}/dog/{id}  & Allows the hardware to send dog’s weight to the back-end for database storage and updates.  \\ \hline
+        GET /tare  & Allows the user to zero the scale (taring). The option is input into the software side and then sent to the hardware.  \\ \hline
+    \end{tabular}
+    \caption{API Endpoints}
+\end{table}
+
+\chapter{Web Application Prototype}\label{appendix:web}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/web/web1.png}\hfill
+    \includegraphics[width=0.5\textwidth]{images/web/web2.png} \\[\smallskipamount]
+    \includegraphics[width=0.5\textwidth]{images/web/web3.png}\hfill
+    \includegraphics[width=0.5\textwidth]{images/web/web4.png} \\[\smallskipamount]
+    \includegraphics[width=0.5\textwidth]{images/web/web5.png}\hfill
+    \includegraphics[width=0.5\textwidth]{images/web/web6.png} \\[\smallskipamount]
+    \includegraphics[width=0.5\textwidth]{images/web/web7.png}\hfill
+    \includegraphics[width=0.5\textwidth]{images/web/web8.png}
+    \caption{Web Application Prototype}
+    \label{fig:web}
+\end{figure}
+
+
+
+\chapter{Mobile Application Prototype}\label{appendix:mobile}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.33333\textwidth]{images/mobile/mobile1.png}\hfill
+    \includegraphics[width=0.33333\textwidth]{images/mobile/mobile2.png}\hfill
+    \includegraphics[width=0.33333\textwidth]{images/mobile/mobile3.png}\\[\smallskipamount]
+    \includegraphics[width=0.33333\textwidth]{images/mobile/mobile4.png}\hfill
+    \includegraphics[width=0.33333\textwidth]{images/mobile/mobile5.png}\hfill
+    \includegraphics[width=0.33333\textwidth]{images/mobile/mobile6.png}
+    \caption{Mobile Application Prototype}
+    \label{fig:mobile}
+\end{figure}
+
+
+
+\chapter{Userflow}\label{appendix:userflow}
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|p{0.4\linewidth}|p{0.4\linewidth}|}
+    \hline
+        \textbf{Userflow Web } & \textbf{Userflow Mobile } \\ \hline
+        User lands on the landing page where they are prompted to sign in.  & User presented in the login page where they are prompted to enter their details.  \\ \hline
+        User sees their profile and can browse dogs or see all dogs.  & User has the option to switch between tabs: Chat, Browse Dogs and Profile.  \\ \hline
+        User can click onto a specific dog.  & User can click on profile to view their details.  \\ \hline
+        User can update weight or edit details of dog.  & User (volunteer/vet) can press chat to ask for assistance.  \\ \hline
+        User can weigh the dog and update the weight of the dog.  & User can add new dogs.  \\ \hline
+        User can have access to the chat functionality to ask or answer questions.  & User can select specific dog.  \\ \hline
+        Admin can add location/center.  & User can weigh the dog and update the weight of the dog.  \\ \hline
+        Admin can edit users or add new users. & Admin can add location/center.  \\ \hline
+          & Admin can edit users or add new users.  \\ \hline
+    \end{tabular}
+    \caption{Userflow for both Web and Mobile}
+\end{table}
+
+\chapter{Prior Art Hardware Specifications}\label{appendix:prior_art_hardware}
+\textbf{DRE Veterinary scale model 400 technical specifications:}
+\begin{itemize}
+    \item The power source can be either battery-powered (6xAA batteries) or can use a 9V AC adapter
+    \item Unit Switching (allows to view the weight of the animal in either kg or lb)
+    \item Settling time(the time it takes to reach a stable state) is less than 2 seconds.
+    \item Maximum weight is 400lb(~180kg), and the resolution is 0.1lb(~0.05kg)
+    \item LCD backlit displaying the weight
+    \item Push buttons for changing configuration(lb/kg) or zeroing the weight scale
+\end{itemize}
+
+\textbf{Charder Medical MS 2210R scale technical specifications:}
+\begin{itemize}
+    \item Unit Switching (allows to view the weight of the animal in either kg or lb)
+    \item Maximum weight is 330lb(~150kg), and the resolution is 0.2lb(~0.1kg)
+    \item Push buttons to change configuration(lb/kg) or zero the weight scale.
+    \item Both LCD and scale need to be powered separately, where the LCD can be powered via either a 1.5V battery or a 1.5V AC adapter. The scale is powered by either 6xAA batteries or a 9V AC adapter.
+    \item The LCD displaying the weight and the scale are separate, so the weight is communicated using a Wireless RF(Radio Frequency) output. The communication is two-way as the scale sends data of the weight to the display while the display sends data of buttons pressed(kg/lb, tare etc.)
+\end{itemize}
+
+\chapter{Proposed Design }\label{appendix:proposed_design_hardware}
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth]{images/hardwareDesign.png}
+\caption{LTspice schematic depicting the electrical design}
+\end{figure}
+
+During our initial testing of the hardware, we were able to discern that the voltage range produced from the Wheatstone bridge for the specified weight range of 0-25Kg to be only 2mv. Therefore, in order to utilise the full 3.3V range of the ADC, we would require a gain of 1065. This is done via the flexible gain feature of the InAmp, where in the gain of the InAmp is decided by the resistor $R_{g}$. Moreover, we have also found an offset voltage of +3mv when taking a differential measurement across the Wheatstone bridge. Therefore, we have resorted to using a offset resistor such that the offset voltage $\approx$ 0.
+
+As seen in Figure G.1, we have used a voltage source to simulate the voltage across the Wheatstone bridge and fed it into the amplification stage which has output a voltage $\approx$ 3V. Due to the effect of residual stresses on the load cells, we still would face the effect of amplifying an offset (at no load). Therefore, to account for this we have left some headroom, such that at max load the output wouldn't be 3.3V.
+
+\chapter{Block Diagram}
+
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth]{images/Block Diagram Hardware.drawio.png}
+\caption{System Block Diagram}\label{appendix:block_diagram}
+\end{figure}

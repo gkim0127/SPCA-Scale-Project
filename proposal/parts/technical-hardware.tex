@@ -1,0 +1,39 @@
+%----------------------------------------------------------------------------------------
+%	Hardware
+%----------------------------------------------------------------------------------------
+
+\chapter{Hardware Components}
+
+\section{Prior Art}
+In the current world, many operating scales are designed for various purposes. From those scales, the DRE Veterinary scale 400 and the Charder Medical MS 2210R scale are one of the most promising and inspiring designs which can be followed for the pure purpose of weighing dogs/animals. Upon viewing the technical and functional specifications provided(Appendix \ref{appendix:prior_art_hardware}), it is found that the DRE scale has more internal functionality with more ability to provide accurate readings of weights and an internally connected LCD, whilst the Charder scale allows the data to be sent wirelessly to a wireless display in where information is received and transmitted back and forth. Therefore, our design must combine both aspects of each design and further enhance it to work towards our required goal.
+
+
+\section{Operating Principles}
+The initial principle of estimating a dog's weight is done via four load cells placed in each corner of the scale. Each of the load cells could be modelled by two resistors whose resistance changes in response to an external force applied to the load cell. One of the resistors would increase in resistance due to compression while the other resistor would decrease its resistance due to compression. This relationship would be reversed if the external force were a tension force instead of compression.
+The 4 strain gauges are arranged in a balanced Wheatstone bridge configuration, such that when an external force is applied to these strain gauges, they would deform. This, in turn causes an imbalance in the Wheatstone bridge, which results a small electrical difference which is proportional to the external force.
+
+Since the signal is in the range of microvolts, an amplifier circuit is used in order to generate a  signal in the range of millivolts and volts. This amplified signal before being fed into the ADC of the Raspberry Pico, is passed into a low pass filter to reduce the amount of noise present in the signal, thereby, resulting in taking an accurate weight measurement of the dogs.
+
+\section {Proposed Design}
+\begin{table}[!ht]
+    \centering
+    \caption{ Technical specifications of the proposed electrical design}
+    \label{tab:hardware_tech_specs}
+    \begin{tabular}{|p{0.4\linewidth}|p{0.3\linewidth}| p{0.1\linewidth}|} \hline
+        \textbf{Parameter } & \textbf{Specification}  & \textbf{Units}\\ \hline
+        Supply voltage & 6 & V \\ \hline
+        Output Voltage Range $(V_{OH})$ & 0-3 & V \\ \hline
+         Weight Range & 0-25 & Kg \\ \hline
+        Designed Weight Accuracy & 0.5 & kg \\ \hline
+        Operating Temperature & 0-40 & $^\circ$C \\ \hline
+        Sustainability Compliance & RoHS & \\ \hline
+    \end{tabular}
+
+\end{table}
+
+The load cells are arranged in a balanced Wheatstone bridge configuration. However, as mentioned in the aforementioned section, the change in the load cell resistances in very small and therefore would need to amplified from a resistance change range of milli-ohms to a voltage that can would range from volts to milli-volts. We have chosen to the use all the 4 load cells in a full bridge configuration in order to eliminate the change in resistance due to external factors such as temperature.
+
+In terms of the amplification stage, we would like the amplification such that we could utilize the full range of the ADC while being impervious to noise. Therefore, ideally the amplification stage would prioritise characteristics such as Common-Mode Rejection Ratio (CMRR), Input Impedance, Offset voltage output, low power mode option and cost. Taking these factors into consideration, we have chosen to use an Instrumentation amplifier (InAmp) over a differential amplifier. Though the differential amplifier can be utilised for this application, they have a lower CMRR, and therefore are more susceptible to noise and input offset voltage. Moreover, even though using discrete components to make the differential amplifier would be cheaper, we have prioritised accurate acquisition and amplification of the signal.
+Furthermore, the Instrumentation amplifier could be implemented using discrete components, this would require the use of high level op amps and high precision resistors which overall, would result in the same cost as purchasing an InAmp. The LTspice simulation results are detailed in Appendix \ref{appendix:proposed_design_hardware}
+
+The filter stage would be composed of a passive RC filter at a cutoff frequency 10KHz, in order to filter out any noise coupled into our signal. This filter stage would be placed very close to the ADC channel pin to make sure there is minimal noise coupled into the signal.

@@ -1,0 +1,55 @@
+%----------------------------------------------------------------------------------------
+%	Software
+%----------------------------------------------------------------------------------------
+
+\chapter{Software Components}
+
+\section{Prior Art}
+
+ezyVet is a cloud-based veterinary practice management software designed for easier veterinary practice management. The functional specifications of ezyVet include many robust features such as:
+
+\begin{itemize}
+    \item Appointment Scheduling: Users are able to schedule appointments easily on the system. Reminders can also be set so that patients don't forget their appointment.
+    \item Clinical Records: Users are able to easily maintain clinical records for each patient, including the history of each visit, procedures and past treatments.
+    \item Communication: Patients are able to easily communicate with staff using the communication channels provided by ezyVet. These channels include SMS, E-mail, e-Faxing etc.
+\end{itemize}
+
+While it is not possible to know what the exact technical specifications ezyVet may have, the general technical specifications that can be seen is that ezyVet is a cloud-based software. This allows the software to be accessed anywhere at any time. ezyVet also uses bank-level encryption, two-factor authentication and AWS. ezyVet is also very flexible and scalable, by having the cloud scale seamlessly, eliminating the need for hardware upgrades.
+
+DuePet is a pet management mobile application that helps pet owners keep track of their pets' details and needs. The functional specifications of DuePet include features such as:
+\begin{itemize}
+    \item Trackers: DuePet allows the user to track many details such as food intake, water intake, weight, physical measurements, exercise and much more.
+    \item In-app reminders: DuePet allows users to set up reminders for anything related to their pet, such as food reminders to daily walks.
+    \item Records: Specific records about the pets fitness, food, and care plan can all be listed in the app with easy categorisation by using folders.
+\end{itemize}
+
+As mentioned above, it is not possible to know the exact technical specifications of DuePet. From what can be seen, DuePet is only available as a mobile application. Users can make an account on DuePet to share pet data across different devices, or even with family members. No information can be found on the security of DuePet.
+
+\section{Embedded}
+
+As shown in the diagram \ref{appendix:block_diagram}, we measure the filtered analog signal from the load cells and feed this into the Raspberry Pi Pico W. While the Pico provides 3 x 12-bit ADC, we will use one channel from the ADC which would take in the signal from the Wheatstone bridge circuit. Reading this digital information from the ADC, we use an algorithm to generate a weight value based on the relation between the change in resistance of the load cell and weight. The aforementioned calibration is required to increase the accuracy to account for real-life factors such as change in resistance due to temperature. The ADC will be run in the free-running conversion mode. After each completion per cycle, the Interrupt Service Routines (ISR) will be triggered.The microcontroller will also act as a filter that compares the converted weight values to a set tolerance value. This sets the limit boundaries and indicates the stability of the values. While having lower tolerance values would result in higher accuracy, this would require testing to find the most appropriate values while considering other factors. Factors include the animal's movement, making it harder to reach a stable weight with a low tolerance at an appropriate time. The weight values will be synchronised with the 7-segment display to update in real-time when the measuring occurs. However, it would only be sent to the back-end via HTTP after filtering the stable weight value.
+
+Once the microcontroller has read and adjusted the load cell data, the data is transmitted to the software back-end for our application using an HTTP protocol. Initially, we set up the sockets to serve the client and server interaction via TCP, allowing the Raspberry Pi Pico W to send HTTP requests of data to the back-end server. The data will be sent to the software back-end as a single numeric value through a POST API endpoint. The API endpoint will return a 200 OK status code if the request is successful, or an error will return. Once retrieved, our back-end will handle the processing of the data before storing it securely in a log dataset.
+
+
+\section{Back-end}
+
+\textbf{Data handling}\\
+Our back-end will deal with this project's data, including user, dog, location and message data. They are all linked together in some way to ease the workflow for retrieving correct data and allowing for correct permissions to be granted. How our data will be tracked is through entity objects. Saving data to their entity object fields before sending them to their relevant database helps to keep track of the purpose behind all data being handled and so we're saving the data to the right database table every time.
+
+User data is collected to verify their role at the SPCA (whether an admin, vet or volunteer), which is tested by a required login to use the platform. The user's password will be hashed before being entered into the database for added security. Dog data is the main data our back-end will be handling. Most of the dog's data set will be generated through the back-end, like the dog's name and breed, but the weight will come from the hardware. The location data we are handling is for allowing certain authorised users to see only specific dog data for their SPCA centre. Because a chat feature is also needed for this project, message data will be transferred through our back-end to a 'Messages' table in our database. We decided to store these messages in a database to use the chat tool on both the web and mobile platforms. Permissions to edit data are only for admins and vets to keep the data secure from unauthorised parties and individuals.
+
+We have listed in Appendix \ref{appendix:API} the endpoints that we believe are necessary for our application to work correctly. These endpoints will be secured via required authentication. Since users are required to log in before accessing anything, this login will also generate an authentication token allowing these users to use the various endpoints. Checks will be created in our back-end to see if an authentication token is present and not to advance on functionality unless provided so. Other endpoints are only usable for users with higher permissions (e.g. admins) so extra back-end checks will be added to these endpoints. Please refer to Appendix \ref{appendix:API} for further details.
+
+\section{Front-end}
+The front-end user interfaces we have chosen to support consist of a front-end web-based and iOS application. We have decided to support similar functionality in both of the applications allowing different users to accomplish different tasks the supported users include volunteers, vets and admins.
+
+\textbf{Users}\\
+There are three different user types: admin, vet, and volunteer. The functionality will differ depending on which user type is logged in. Vets and volunteers are able to view all dogs listed at their working location and update the weight of a selected dog. However, only vets are able to edit details about the dog. Admins will be able to do all of the above and manage user accounts and locations.
+
+The chat function will only be available to vets and volunteers, where volunteers can message vets and vets can reply.
+
+\textbf{Applications}\\
+The following sections will go through the workflow of the key functionality of both the web and mobile applications. Appendix \ref{appendix:web} and \ref{appendix:mobile} will contain screenshots for the workflow of both the web and mobile applications respectively.
+
+Refer to Appendix \ref{appendix:userflow} to see the user flow for the web and mobile applications.

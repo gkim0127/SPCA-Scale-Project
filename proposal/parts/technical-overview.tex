@@ -1,0 +1,9 @@
+%----------------------------------------------------------------------------------------
+%	Technical Overview
+%----------------------------------------------------------------------------------------
+
+\chapter{Technical Overview}
+
+Our intelligent scale system has many components in both the hardware and the software, as shown in \ref{appendix:block_diagram}. While there could be a clear split between hardware and software, all components are interconnected to produce a fully optimal scale system for dogs weighing between 0kgs and 25kgs.
+
+Starting from the hardware side, the dog will be placed on the intelligent scale, which sends the amplified electrical signal from the Wheatstone bridge into the Raspberry Pi Pico (ADC). The Pico will then take an average of the received amplified electrical signals converted into readable weight values. The weight is stabilised when the dog is at a standstill. This weight will then be sent to the software side via a POST API call sent by the Pico. Once this call is received and processed in the back-end of our server, it'll be stored securely along with the dog's other data. From here, it is available for authorised users to view on our web and mobile applications based on their role and location.

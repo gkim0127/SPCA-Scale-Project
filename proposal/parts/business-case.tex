@@ -1,0 +1,81 @@
+%----------------------------------------------------------------------------------------
+%	Business Case: Introduction
+%----------------------------------------------------------------------------------------
+
+\chapter{Overview}
+
+In our digital age, where technology makes our lives more efficient, intelligent systems are finding their way into businesses worldwide. Our company has been approached by the Royal New Zealand Society for the Prevention of Cruelty to dogs (SPCA) to create an intelligent scale system to weigh dogs at their rescue centres. Tracking dog weight is important for their physical health but can be stressful for some dogs making the task more challenging. To overcome this, the SPCA is looking to implement an automated system to make the process more seamless for the staff and the dogs.
+
+We must consider many hardware and software aspects to implement a project like this. These aspects include how these components will work alone and together while considering other factors like data privacy and potential breach of Treaty obligations. This project proposal will outline the project's general hardware and software designs and non-technical aspects.
+
+\chapter{Deliverables}
+
+The major work tasks are divided into 2 main categories in both the Gantt Chart and the Work breakdown structure provided in Appendix \ref{appendix:deliverables}. The division of tasks is mainly for easy legibility but throughout the project, all the members will consistently check in with one another through regular meetings and online communication to ensure that the hardware and software are connected.
+
+For the software side, as we deem the front-end to be more work intensive compared to the back-end, we will try to keep a 3:1 member ratio, with a member being a bit more flexible switching in between the two ends.
+
+There would be 2 subteams under hardware, wherein the firmware team would initially set up the communication between the Pico and the back-end while the electronics team would be designing the necessary amplification, filtering stage and the PCB design. Later on, the electronics team would proceed to work with the firmware team in order to implement the necessary functionality on the Raspberry Pico.
+
+Towards the end of the project, all team members will collectively prepare for the demo and write the final report.
+
+\chapter{Requirements}
+
+We need to consider many requirements when creating an intelligent scale system outside of the technical build. The following sections will cover these requirements in more detail and justify how they will be met.
+
+\section{Te Tiriti o Waitangi}
+
+Under Te Tiriti, we have the obligations to:
+\begin{itemize}
+    \item Exercise responsibility in ways that enable Māori to live, thrive and flourish as Māori.
+    \item Enable Māori to exercise tino rangatiratanga/authority over their own health and wellbeing.
+    \item Contribute to equitable health outcomes for Māori.
+\end{itemize}
+
+Using this product, we are able to accurately find a dog’s weight and keep a record of this which can potentially allow us to spot any health risks allowing for a quick response. Since the Māori consider dogs as their whanau(family) and care deeply about their wellbeing, this has the potential to increase the general health and well-being of their dogs, which is significant in Māori culture and contributes towards their health outcomes. Via this, the Māori are promoted to feel a sense of self-determination which allows them to exercise tino rangatiratanga allowing them to take over and be more mindful of their own health and wellbeing.
+
+The principle of protection states that the rights and interests of the Māori people are protected and not compromised, this principle extends towards the welfare of protecting dogs from harm and exploitation. This will be accomplished by having safety precautions to prevent misuse and educating and training users (SPCA employees) on properly using the scale. In keeping with the principle of protection, it will be made sure during the design and manufacture of the product that no materials or equipment that could endanger a dog when using the scale will be exposed by any means.
+
+\section{Sustainability and Environmental}
+
+Sustainability is very important when designing our SPCA dog weighing scale and software. We need to ensure that we use our available resources in a responsible manner. This means that we must take action to ensure that irreplaceable resources are conserved for as long as possible. The goal is to make our dog weighing scale more sustainable by reducing its emissions during its life-cycle. Our concern for the product life-cycle will be focused on manufacturing/assembly, end of life, and energy consumption. We won’t be assessing raw material acquisition/processing and usage.
+
+For our product to be considered sustainable in an ecological way, it should not result in harm to individuals or society, and it should not cause damage to the environment. For the end of life of our product, any recyclable and reusable components can be used again for its materials or parts for similar purposes. Recycling materials can significantly reduce waste and carbon dioxide emissions, making it an effective way to promote sustainability. For example, some materials used in our product, like glass, aluminium, and batteries, can be recycled and used for materials so that any metal parts can be scrapped.
+
+For manufacturing, a good sustainability recommendation is to make our product here in New Zealand. This reduces transport emissions significantly, as getting parts made elsewhere and shipping them here will create a lot of carbon emissions due to the fact that New Zealand is quite far away from other countries. Economically, manufacturing this might be a lot more expensive but keeping in mind that working conditions here are quite balanced, which increases equity.
+
+In terms of energy consumption, our dog weighing scale has the function of going into low power mode, a state where energy usage is as minimal as possible while the scale is still functional when the scale is not in use. This ability allows an increase in product longevity and reduces carbon footprint, which promotes sustainability.
+
+Our product is sustainable in a social way as well by promoting the health and well-being of the pet. As our product provides accurate weight measurements and is easily checked by our application,  pet owners can keep track of their dog’s weight and ensure they are maintaining a healthy weight.
+
+An issue we may run into is that some components may not be as easy to recycle. Another issue is the failure of parts, which is especially relevant for the load cells. This is where a proper disposal scheme would be valuable in ensuring any environmental impact, such as waste and pollution, is kept to a minimum. In New Zealand, the only viable way of waste disposal is landfill. This might have been a problem in the past, but with clever engineering, it is one of the most sustainable, environmentally responsible solutions available.
+
+\section{Legal and Privacy}
+
+Data privacy is crucial for our SPCA dog weighing website/application. When handling personal and dog medical data, we must implement strict practices to avoid data leaks or being shared with non-trusted individuals.
+
+The Privacy Act 2020 is the act that the SPCA uses, and it governs the way that organisations and businesses can collect, store, use, and share information. The policy ensures that users know the following:
+\begin{itemize}
+    \item When their data is collected
+    \item How is their data being used
+    \item Their data is being shared appropriately
+    \item Their data is kept secure
+    \item Who has access to their data
+\end{itemize}
+
+Our application must consider data privacy because we must conform to the Privacy Act to ensure that our application does not leak confidential and important information.
+
+Our website collects data for SPCA dogs, including their name, breed, age and weight. Data for dogs should be kept confidential to prevent it from being shared with third parties. The dog data we are handling is still considered health data and needs to be kept confidential by law. The dogs’ data will also need to be kept secure, with only trusted individuals being able to access it hence why a login created by admin staff is required to access data.
+
+Data for the individuals using the site (admins, vets and volunteers) will have personal data they have provided, including their name and the location of the SPCA they work for. Users must be informed of how their data will be used and agree to it for us to use it further. We also need to make sure that users’ personal information is kept securely and not made available to just any individual. This is why an admin hierarchy system is being used for our website, so trusted individuals are the only ones who can access/change user data if need be. On a less technical level, failure to protect personal data can lead to a loss of trust from users and potentially damage the reputation of the SPCA.
+
+Data privacy is a critical aspect that needs to be considered when developing an application that collects and stores confidential information. By viewing the areas outlined above, we can ensure that the application meets the data privacy requirements and that the users' data is kept safe and secure.
+
+
+\section{Other Ethical Issues}
+
+One of the ethical issues that could come up with our intelligent scale system for the SPCA is potential algorithmic bias. In the case of our scale system, the algorithm(s) we build could work against certain dogs based on their breed, size, or other physical characteristics. This could have severe implications for the dogs, resulting in some dogs being potentially mistreated.
+
+Another ethical issue with our scale system is unintentional consequences impacting the dogs. AI systems are designed to optimise for specific objectives; sometimes, these objectives may conflict with other values or priorities. In the context of our SPCA scale system, the aim may be to weigh dogs accurately, but there could be unintentional negative outcomes. An example is the system may encourage staff to focus too much on dog weight at the expense of other factors, such as the dogs's overall well-being.
+
+These issues can be eradicated by regularly checking on the dogs to ensure they are kept happy and healthy before, during and after being weighed.
+
